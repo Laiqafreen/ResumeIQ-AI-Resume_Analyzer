@@ -92,3 +92,48 @@ ai-resume-analyzer/
 │
 ├── .gitignore
 └── README.md
+
+## ☁️ Deployment
+
+ResumeIQ is deployed using a separate frontend and backend architecture.
+
+### Frontend
+- **Platform:** Vercel
+- **Framework:** React + Vite
+- **Live Application:** https://resume-iq-ai-resume-analyzer-seven.vercel.app/
+
+### Backend
+- **Platform:** Render
+- **Framework:** Flask
+- **Live API:** https://resumeiq-ai-resume-analyzer-wlk3.onrender.com
+- **Health Check:** https://resumeiq-ai-resume-analyzer-wlk3.onrender.com/api/health
+
+### AI Service
+- **Provider:** Google Gemini API
+- **Model:** Gemini 3.6 Flash
+- API key is stored securely as an environment variable on Render.
+
+### Deployment Architecture
+
+React/Vite Frontend
+        ↓
+      Vercel
+        ↓
+Flask Backend API
+        ↓
+      Render
+        ↓
+    Gemini API
+
+The frontend communicates with the deployed Flask backend through the `VITE_API_URL` environment variable.
+
+### Environment Variables
+
+Frontend:
+
+```env
+VITE_API_URL=Your_render_link
+
+Backend:
+GEMINI_API_KEY=your_gemini_api_key
+
