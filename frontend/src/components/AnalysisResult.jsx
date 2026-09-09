@@ -60,7 +60,7 @@ export default function AnalysisResult({
     try {
 
       const response = await fetch(
-        'http://127.0.0.1:5000/api/chat',
+       `${import.meta.env.VITE_API_URL}/api/chat`,
         {
           method: 'POST',
 
